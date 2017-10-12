@@ -9,6 +9,8 @@ class User_Info_Py(models.Model):
     user_first_name = models.CharField(max_length=100,default=None, blank=True, null=True)
     user_last_name = models.CharField(max_length=100,default=None, blank=True, null=True)
     user_password = models.CharField(max_length=15,default=None, blank=True, null=True)
+    class Meta:
+        app_label = 'getit'
 
 
 class Question(models.Model):
@@ -20,9 +22,16 @@ class Question(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
+    class Meta:
+        app_label = 'getit'
+
 class Choice(models.Model):
     question = models.ForeignKey(Question)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
     def __str__(self):
         return self.choice_text
+    class Meta:
+        app_label = 'getit'
+
+

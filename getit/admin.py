@@ -3,6 +3,9 @@ from getit.models import User_Info_Py
 from getit.models import Question
 from getit.models import Choice
 
+
+
+
 class ChoiceInline(admin.StackedInline):
     model = Choice
     extra = 3

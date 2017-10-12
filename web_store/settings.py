@@ -25,7 +25,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'getit'
+    'getit',
+    'edutime'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -71,8 +72,27 @@ DATABASES = {
         'PASSWORD' : 'python_app',
         'HOST' : '127.0.0.1',
         'PORT' : '5432'
+    },
+    'edudb': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'OPTIONS': {
+            'options': '-c search_path=app'
+        },
+        'NAME': 'itedudb',
+        'USER' : 'python_app',
+        'PASSWORD' : 'python_app',
+        'HOST' : '127.0.0.1',
+        'PORT' : '5432'
     }
 }
+
+DATABASE_ROUTERS = [
+        [os.path.join(BASE_DIR, 'edutime.dbRouter.EdutimeDBRouter')],
+        [os.path.join(BASE_DIR, 'getit.dbRouter.GetItDBRouter')]
+
+
+]
+
 
 
 # Internationalization
