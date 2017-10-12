@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html;charset=UTF-8">
+    <title>Catalog</title>
+</head>
+<body>
+    <style>
+    .wrapper{
+        width: 1000px;
+        margin: 0 auto;
+    }
+    .wrapper .header{
+        width: 100%;
+        height: 40px;
+        background: #eee;
+    }
+    .wrapper .body{
+        width: 100%;
+        min-height: 600px;
+        background: #ccc;
+        font-size: 0;
+    }
+    .wrapper .body .left{
+        width:300px;
+        min-height: 600px;
+        background: yellow;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .wrapper .body .main{
+        width:660px;
+        margin-left: 40px;
+        min-height: 600px;
+        background: green;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 0;
+    }
+    .wrapper .body .main .item{
+        display: inline-block;
+        vertical-align: top;
+        margin:10px;
+        background: red;
+        width: 80px;
+        min-height: 100px;
+        text-decoration: none;
+    }
+    .wrapper .body .main .item img{
+        display: block;
+        width:80px;
+        height: auto;
+    }
+    .wrapper .body .main .item span{
+        
+        color:#fff;
+    }
+    .wrapper .body .main .item .title{
+        font-size: 14px;
+        display: block;
+        margin-top: 5px;
+    }
+    .wrapper .body .main .item .price{
+        font-size: 14px;
+        display: block;
+        margin-top: 5px;
+    }
+    </style>
+    <div class="wrapper">
+        <div class="header"><h1>{{category.name}}</h1></div>
+        <div class="body">
+            <div class="left"></div>
+            <div class="main">
+                {% for tovar in tovars %}
+                <a class="item" href="/item/{{tovar.alias}}/">
+                    <img src="{{tovar.image}}" alt="">
+                    <span class="title">{{tovar.name}}</span>
+                    <span class="price">{{tovar.price}} руб</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

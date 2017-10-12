@@ -1,0 +1,14 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'getit/style.css' %}" />
+
+{% if latest_question_list %}
+    THIS IS A GETIT PAGE
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'getit:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
